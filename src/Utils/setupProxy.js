@@ -1,15 +1,10 @@
-const {createProxyMiddleware} = require("http-proxy-middleware");
 
-module.exports = app => {
-	app.use(
-		createProxyMiddleware("/api/v2/list_movies.json?", {
-			target: "https://yts.torrentbay.to/",
-			headers: {
-				accept: "application/json",
-				method: "GET",
-			},
-			changeOrigin: true,
+const proxy = require('http-proxy-middleware');
 
-		}),
-	);
+module.exports = function (app) {
+    app.use(proxy('/api/v2', {
+        target: 'https://yts.torrentbay.to',
+        logLevel: 'debug',
+        changeOrigin: true
+    }));
 };
