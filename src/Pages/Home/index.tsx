@@ -27,7 +27,7 @@ const Home = () => {
 
 	useEffect(() => {
 		const getMovie = async () => {
-			const res = await axios.get(`https://yts.torrentbay.to/api/v2/list_movies.json?limit=25&page=${page}`, {
+			const res = await axios.get(`/api/v2/list_movies.json?limit=25&page=${page}`, {
 				headers: {
 					"Content-Type": "application/x-www-form-urlencoded",
 				},
