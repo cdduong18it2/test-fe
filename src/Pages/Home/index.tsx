@@ -27,7 +27,11 @@ const Home = () => {
 
 	useEffect(() => {
 		const getMovie = async () => {
-			const res = await axios.get(`api/v2/list_movies.json?limit=25&page=${page}`);
+			const res = await axios.get(`api/v2/list_movies.json?limit=25&page=${page}`, {
+				headers: {
+					"Access-Control-Allow-Origin": "*",
+				},
+			});
 
 			console.log(res);
 			setMovies([...movies, ...res.data.data.movies]);
