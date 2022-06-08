@@ -2,7 +2,7 @@ const {createProxyMiddleware} = require("http-proxy-middleware");
 
 module.exports = app => {
 	app.use(
-		createProxyMiddleware("/api/v2/list_movies.json?", {
+		createProxyMiddleware("", {
 			target: "https://yts.torrentbay.to/"
 		}),
 	);
