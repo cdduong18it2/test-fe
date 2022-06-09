@@ -14,6 +14,13 @@ export interface Detail {
 
 }
 
+const headers = {
+	"Content-Type": "application/json;charset=UTF-8",
+	"Access-Control-Allow-Origin": "*",
+	Accept: "application/json",
+};
+
+
 const Home = () => {
 	const [movies, setMovies] = useState<Movie[]>([]);
 	// eslint-disable-next-line no-unused-vars
@@ -27,7 +34,11 @@ const Home = () => {
 
 	useEffect(() => {
 		const getMovie = async () => {
-			const res = await axios.get(`api/v2/list_movies.json?limit=25&page=${page}`);
+			const res = await axios.get(`api/v2/list_movies.json?limit=25&page=${page}`, {
+				headers,
+				data: {},
+
+			});
 
 			console.log(res);
 			setMovies([...movies, ...res.data.data.movies]);
