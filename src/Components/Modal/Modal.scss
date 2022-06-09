@@ -19,12 +19,7 @@
   }
 
   .buttons {
-    position: absolute;
 
-    display: flex;
-    flex-direction: column;
-    top: 3%;
-    right: -6%;
   }
 
 
@@ -499,42 +494,23 @@
 @media (min-width: 1025px) {
   .modal__inner {
 
-    .container {
-      width: 90%;
-    }
+
     &-header {
 
 
-      .info-movie {
-        &__title {
-          font-size: 25px;
-          line-height: 1.1;
-        }
 
-        &__buttons {
-          align-items: center;
-
-          &-feeling {
-
-            gap: 0 20px;
-            align-items: unset;
-            .btn {
-              padding: 13px 15px;
-            }
-
-          }
-          &-edit {
-            .btn {
-              padding: 13px 15px;
-            }
-          }
-        }
-      }
     }
     &-infoMovie {
       p:first-child {
         font-size: 20px;
       }
+    }
+    .buttons {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      top: 3%;
+      right: -6%;
     }
 
   }
