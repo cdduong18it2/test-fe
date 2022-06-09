@@ -36,17 +36,19 @@ const Home = () => {
 
 	useEffect(() => {
 		const getMovie = async () => {
-			const res = await axios.get(`api/v2/list_movies.json?limit=25&page=${page}`, {
-				headers,
-				data: {},
+			try {
+				const res = await axios.get(`api/v2/list_movies.json?limit=25&page=${page}`, {
+					headers,
+					data: {},
 
-			});
+				});
 
-			res ? setMovies([...movies, ...res.data.data.movies]) :
-				setMovies([...movies, ...moviesList]);
+				res ? setMovies([...movies, ...res.data.data.movies]) :
+					setMovies([...movies, ...moviesList]);
+				setLoading(false);
+			} catch (err) {
 
-
-			setLoading(false);
+			}
 		};
 
 		getMovie();
