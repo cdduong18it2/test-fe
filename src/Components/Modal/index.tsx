@@ -11,7 +11,8 @@ import Comments from "../Comments";
 import Owner from "../Owner";
 
 interface Props {
-    movies: Movie[];
+    movies?: Movie[];
+	moviesList?: Movie[];
 
     title: string;
     background_image: string;
@@ -20,7 +21,8 @@ interface Props {
 
 const Modal = (props: Props) => {
 	// eslint-disable-next-line camelcase
-	const {title, background_image, movies, firstEl} = props;
+	const {title, background_image, movies, firstEl, moviesList} = props;
+
 
 	const slideRight = () => {
 		const slider = document.getElementById("slider");
@@ -128,8 +130,19 @@ const Modal = (props: Props) => {
 					<div id="slider" ref={scrollRef} className="modal__inner-slider__horizontal"
 						style={{overflowX: "scroll"}}>
 						{
-							movies.map((item, idx) => (
+							movies?.map((item, idx) => (
 								<MovieList
+									moviesList={moviesList}
+									movies={movies}
+									id={item.id}
+									title="Kim Aeyong"
+									background_image={item.background_image}/>
+							))
+						}
+						{
+							moviesList?.map((item, idx) => (
+								<MovieList
+									moviesList={moviesList}
 									movies={movies}
 									id={item.id}
 									title="Kim Aeyong"

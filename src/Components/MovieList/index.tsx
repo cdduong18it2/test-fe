@@ -7,7 +7,7 @@ import Images from "../../Constants/Images";
 import {Movie} from "../../Utils/Interfaces";
 
 interface Props {
-    movies: Movie[];
+    movies?: Movie[];
 
     id: number;
     title: string;
@@ -17,10 +17,12 @@ interface Props {
     setDetail?: React.Dispatch<React.SetStateAction<Detail>>;
     style?: string;
     firstEl?: string | null;
+	moviesList?: Movie[]
 }
 
 const MovieList = (props: Props) => {
-	const {id, title, background_image, viewDetail, setDetail, firstEl, movies} = props;
+	const {id, title, background_image, viewDetail, setDetail, firstEl, movies, moviesList} = props;
+
 
 	const [isSelected, setIsSelected] = useState(false);
 
@@ -44,6 +46,7 @@ const MovieList = (props: Props) => {
 				isSelected ? (
 					<section className='modal'>
 						<Modal
+							moviesList={moviesList}
 							title={title}
 							background_image={background_image}
 							movies={movies}

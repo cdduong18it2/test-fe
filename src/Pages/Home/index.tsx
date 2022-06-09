@@ -8,6 +8,7 @@ import Banner from "../../Components/Banner";
 import Footer from "../../Components/Footer";
 import {moviesList} from "../../Utils/data";
 // import {moviesList} from "../../Utils/data";
+// import {moviesList} from "../../Utils/data";
 
 
 export interface Detail {
@@ -40,11 +41,10 @@ const Home = () => {
 				const res = await axios.get(`api/v2/list_movies.json?limit=25&page=${page}`, {
 					headers,
 					data: {},
-
 				});
 
-				res ? setMovies([...movies, ...res.data.data.movies]) :
-					setMovies([...movies, ...moviesList]);
+				setMovies([...movies, ...res.data.data.movies]);
+
 				setLoading(false);
 			} catch (err) {
 
@@ -61,6 +61,7 @@ const Home = () => {
 			<Carousel/>
 			<MovieColection
 				movies={movies}
+				moviesList={moviesList}
 				viewDetail={viewDetail}
 				setDetail={setDetail}
 				page={page}
@@ -76,6 +77,7 @@ const Home = () => {
 
 			<Carousel
 				movies={movies}
+				moviesList={moviesList}
 				viewDetail={viewDetail}
 				setDetail={setDetail}
 			/>

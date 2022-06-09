@@ -13,10 +13,11 @@ interface Props {
     movies?: Movie[];
     viewDetail?: Detail;
     setDetail?: React.Dispatch<React.SetStateAction<Detail>>;
+	moviesList?: Movie[]
 }
 
 const Carousel = (props: Props) => {
-	const {movies, viewDetail, setDetail} = props;
+	const {movies, viewDetail, setDetail, moviesList} = props;
 
 	const selectMovie = (id: number) => {
 		if (!viewDetail?.isOpened) {
@@ -65,10 +66,25 @@ const Carousel = (props: Props) => {
 	const renderCategories = categoryList.map((item, idx) => (
 		<Card key={idx} item={item}/>
 	));
+
 	const renderListMovie = movies?.map((item, idx) => (
 		<div key={idx} onClick={() => selectMovie(item.id)}>
 			<MovieList
 				movies={movies}
+				id={item.id}
+				title={item.title}
+				background_image={item.background_image}
+				viewDetail={viewDetail}
+				setDetail={setDetail}
+			/>
+		</div>
+
+	));
+	const renderListMovieLocal = moviesList?.map((item, idx) => (
+		<div key={idx} onClick={() => selectMovie(item.id)}>
+			<MovieList
+				movies={movies}
+				moviesList={moviesList}
 				id={item.id}
 				title={item.title}
 				background_image={item.background_image}
@@ -86,12 +102,14 @@ const Carousel = (props: Props) => {
 					<div className='movie-list-horizontal'>
 						<Slider {...settings}>
 							{renderListMovie}
+							{renderListMovieLocal}
 						</Slider>
 					</div>
 				) : (
 					<div className='category-list'>
 						<Slider {...settings}>
 							{renderCategories}
+
 						</Slider>
 					</div>
 				)
