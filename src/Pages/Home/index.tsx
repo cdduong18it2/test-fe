@@ -6,6 +6,8 @@ import MovieColection from "../../Components/MovieColection";
 import {Movie} from "../../Utils/Interfaces";
 import Banner from "../../Components/Banner";
 import Footer from "../../Components/Footer";
+import {moviesList} from "../../Utils/data";
+// import {moviesList} from "../../Utils/data";
 
 
 export interface Detail {
@@ -40,13 +42,16 @@ const Home = () => {
 
 			});
 
+			res ? setMovies([...movies, ...res.data.data.movies]) :
+				setMovies([...movies, ...moviesList]);
 
-			setMovies([...movies, ...res.data.data.movies]);
+
 			setLoading(false);
 		};
 
 		getMovie();
 	}, [page]);
+
 
 	return (
 		<div className="home-page">

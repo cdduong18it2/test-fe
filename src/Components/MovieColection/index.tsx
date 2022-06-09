@@ -18,6 +18,7 @@ interface Props {
 const MovieColection: React.FC<Props> = props => {
 	const {movies, viewDetail, setDetail, setPage} = props;
 
+	console.log(movies);
 	const selectMovie = (id: number) => {
 		if (!viewDetail.isOpened) {
 			setDetail({
