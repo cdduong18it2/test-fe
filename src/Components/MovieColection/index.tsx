@@ -12,13 +12,11 @@ interface Props {
     setDetail: React.Dispatch<React.SetStateAction<Detail>>;
     page: number;
     setPage: React.Dispatch<React.SetStateAction<number>>
-	moviesList: Movie[]
 }
 
 const MovieColection: React.FC<Props> = props => {
-	const {movies, viewDetail, setDetail, setPage, moviesList} = props;
+	const {movies, viewDetail, setDetail, setPage} = props;
 
-	console.log(movies);
 	const selectMovie = (id: number) => {
 		if (!viewDetail.isOpened) {
 			setDetail({
@@ -67,24 +65,7 @@ const MovieColection: React.FC<Props> = props => {
 							),
 							)
 						}
-						{
-							moviesList?.map((movie, idx) => (
-								<div key={idx} onClick={() => selectMovie(movie.id)}>
-									<MovieList
-										movies={movies}
-										moviesList={moviesList}
-										viewDetail={viewDetail}
-										setDetail={setDetail}
-										key={idx}
-										id={movie.id}
-										title={movie.title}
-										background_image={movie.background_image}
-										firstEl={idx === 0 ? "label" : null}
-									/>
-								</div>
-							),
-							)
-						}
+
 					</InfiniteScroll>
 
 

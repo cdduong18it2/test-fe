@@ -13,11 +13,10 @@ interface Props {
     movies?: Movie[];
     viewDetail?: Detail;
     setDetail?: React.Dispatch<React.SetStateAction<Detail>>;
-	moviesList?: Movie[]
 }
 
 const Carousel = (props: Props) => {
-	const {movies, viewDetail, setDetail, moviesList} = props;
+	const {movies, viewDetail, setDetail} = props;
 
 	const selectMovie = (id: number) => {
 		if (!viewDetail?.isOpened) {
@@ -80,20 +79,6 @@ const Carousel = (props: Props) => {
 		</div>
 
 	));
-	const renderListMovieLocal = moviesList?.map((item, idx) => (
-		<div key={idx} onClick={() => selectMovie(item.id)}>
-			<MovieList
-				movies={movies}
-				moviesList={moviesList}
-				id={item.id}
-				title={item.title}
-				background_image={item.background_image}
-				viewDetail={viewDetail}
-				setDetail={setDetail}
-			/>
-		</div>
-
-	));
 
 	return (
 		<>
@@ -102,7 +87,6 @@ const Carousel = (props: Props) => {
 					<div className='movie-list-horizontal'>
 						<Slider {...settings}>
 							{renderListMovie}
-							{renderListMovieLocal}
 						</Slider>
 					</div>
 				) : (

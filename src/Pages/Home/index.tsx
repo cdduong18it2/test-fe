@@ -6,9 +6,6 @@ import MovieColection from "../../Components/MovieColection";
 import {Movie} from "../../Utils/Interfaces";
 import Banner from "../../Components/Banner";
 import Footer from "../../Components/Footer";
-import {moviesList} from "../../Utils/data";
-// import {moviesList} from "../../Utils/data";
-// import {moviesList} from "../../Utils/data";
 
 
 export interface Detail {
@@ -61,7 +58,6 @@ const Home = () => {
 			<Carousel/>
 			<MovieColection
 				movies={movies}
-				moviesList={moviesList}
 				viewDetail={viewDetail}
 				setDetail={setDetail}
 				page={page}
@@ -77,7 +73,6 @@ const Home = () => {
 
 			<Carousel
 				movies={movies}
-				moviesList={moviesList}
 				viewDetail={viewDetail}
 				setDetail={setDetail}
 			/>
