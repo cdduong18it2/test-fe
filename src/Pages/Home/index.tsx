@@ -40,7 +40,7 @@ const Home = () => {
 
 			});
 
-			console.log(res);
+
 			setMovies([...movies, ...res.data.data.movies]);
 			setLoading(false);
 		};
